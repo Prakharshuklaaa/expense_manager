@@ -1,4 +1,4 @@
-# expense_manager
+# Expense Calculator
 
 A new Flutter project.
 
