@@ -26,7 +26,7 @@ class Chart extends StatelessWidget {
         'day': DateFormat.E().format(weekDay).substring(0, 1),
         'amount': totalSum,
       };
-    });
+    }).reversed.toList();
   }
 
   //calculating the total spending of that week
@@ -39,7 +39,8 @@ class Chart extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      elevation: 10,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+      elevation: 7,
       margin: EdgeInsets.all(20),
       // if we only need padding we can use padding widget nno need of container
       child: Padding(
