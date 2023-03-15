@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import '../models/transaction.dart';
 import 'package:intl/intl.dart';
-// .. means we have to go one level up
+
+import '../models/transaction.dart';
 
 class TransactionList extends StatelessWidget {
   final List<Transaction> transactions;
@@ -15,8 +15,19 @@ class TransactionList extends StatelessWidget {
       child: transactions.isEmpty
           ? Column(
               children: <Widget>[
-                Text('No transaction added yet!'),
-                Image.asset('assets/images/waiting.png'),
+                Text(
+                  'No transactions added yet!',
+                  //style: Theme.of(context).textTheme.title,
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                Container(
+                    height: 200,
+                    child: Image.asset(
+                      'assets/images/waiting.png',
+                      fit: BoxFit.cover,
+                    )),
               ],
             )
           : ListView.builder(
@@ -25,14 +36,19 @@ class TransactionList extends StatelessWidget {
                   child: Row(
                     children: <Widget>[
                       Container(
-                        margin:
-                            EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+                        margin: EdgeInsets.symmetric(
+                          vertical: 10,
+                          horizontal: 15,
+                        ),
                         decoration: BoxDecoration(
-                          border: Border.all(color: Colors.green, width: 2),
+                          border: Border.all(
+                            color: Theme.of(context).primaryColor,
+                            width: 2,
+                          ),
                         ),
                         padding: EdgeInsets.all(10),
                         child: Text(
-                          '\₹${transactions[index].amount.toStringAsFixed(2)}', //String interpolation
+                          '\₹${transactions[index].amount.toStringAsFixed(2)}',
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 20,
@@ -45,19 +61,16 @@ class TransactionList extends StatelessWidget {
                         children: <Widget>[
                           Text(
                             transactions[index].title,
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 16,
-                            ),
+                            // style: Theme.of(context).textTheme.title,
                           ),
                           Text(
                             DateFormat.yMMMd().format(transactions[index].date),
                             style: TextStyle(
-                              color: Colors.blueGrey,
+                              color: Colors.grey,
                             ),
                           ),
                         ],
-                      )
+                      ),
                     ],
                   ),
                 );
