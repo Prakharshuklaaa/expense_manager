@@ -14,7 +14,8 @@ class TransactionList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 500,
+      //for full device = height but here we have to take only fractional height that's why we multiply with some factor
+      // height: MediaQuery.of(context).size.height * 0.6,
       child: transactions.isEmpty
           ? Column(
               children: <Widget>[
